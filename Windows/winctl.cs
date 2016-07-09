@@ -50,16 +50,16 @@ namespace WinCtl {
 	    static void Main(string[] args)
 	    {
 
-	    	if (args.length != 1) {
+	    	if (args.Length != 1) {
 	    		Console.WriteLine("Usage: winctl.exe <ip address>");
 	    		Application.Exit();
 	    	}
 
 	    	string MY_IP = args[0];
 	    	WinCtl wc = new WinCtl();
-	    	Socket s;
-	    	TcpListener listener;
-	    	IPAddress ipAdress;
+	    	Socket s = null;
+	    	TcpListener listener = null;
+	    	IPAddress ipAdress = null;
 
 	        try
 	        {
