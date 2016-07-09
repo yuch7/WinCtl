@@ -32,7 +32,7 @@ namespace WinCtl {
 	    	ProcessStartInfo processInfo;
 		    Process process;
 
-		    fileLoc = "/Users/Yuch/Desktop/shutdown\ N.bat";
+		    string fileLoc = "/Users/Yuch/Desktop/shutdown N.bat";
 
 		    processInfo = new ProcessStartInfo("cmd.exe", "/c " + fileLoc);
 		    processInfo.CreateNoWindow = true;
@@ -49,7 +49,7 @@ namespace WinCtl {
 
 	    static void Main(string[] args)
 	    {
-	    	int MY_IP = args[0];
+	    	string MY_IP = args[0];
 
 	        try
 	        {
