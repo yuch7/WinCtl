@@ -54,13 +54,16 @@ namespace WinCtl {
 	        try
 	        {
 	        	IPAddress ipAdress = IPAddress.Parse(MY_IP);
-	        	TcpListener litstener = new TcpListener(ipAdress,8777);
+	        	TcpListener listener = new TcpListener(ipAdress,8777);
 	        	listener.Start();
 	        	Socket s = listener.AcceptSocket();
-	        	byte[] b = new byte[1];
+	        	byte[] b = new byte[4];
 	        	while (true){
-		        	char z = Convert.ToChar(s.Receive(b));
-		        	switch (z) {
+	        		s.Receive(b);
+					if (BitConverter.IsLittleEndian)
+					    Array.Reverse(bytes);
+					int z = BitConverter.ToInt32(bytes, 0);
+	        		switch (z) {
 		        		case 1:
 		        			VolUp();
 		        			break;
