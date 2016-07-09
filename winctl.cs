@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 
 namespace WinCtl {
@@ -31,7 +32,7 @@ namespace WinCtl {
 	    	ProcessStartInfo processInfo;
 		    Process process;
 
-		    fileLoc = "/file";
+		    fileLoc = "/Users/Yuch/Desktop/shutdown\ N.bat";
 
 		    processInfo = new ProcessStartInfo("cmd.exe", "/c " + fileLoc);
 		    processInfo.CreateNoWindow = true;
@@ -39,6 +40,7 @@ namespace WinCtl {
 		    // *** Redirect the output ***
 		    processInfo.RedirectStandardError = true;
 		    processInfo.RedirectStandardOutput = true;
+		    processInfo.Arguments = time.ToString();
 
 		    process = Process.Start(processInfo);
 		    process.WaitForExit();
