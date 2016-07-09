@@ -61,8 +61,8 @@ namespace WinCtl {
 	        	while (true){
 	        		s.Receive(b);
 					if (BitConverter.IsLittleEndian)
-					    Array.Reverse(bytes);
-					int z = BitConverter.ToInt32(bytes, 0);
+					    Array.Reverse(b);
+					int z = BitConverter.ToInt32(b, 0);
 	        		switch (z) {
 		        		case 1:
 		        			VolUp();
