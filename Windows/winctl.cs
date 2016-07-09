@@ -50,20 +50,23 @@ namespace WinCtl {
 	    static void Main(string[] args)
 	    {
 
-	    	if (args.length() != 1) {
+	    	if (args.length != 1) {
 	    		Console.WriteLine("Usage: winctl.exe <ip address>");
 	    		Application.Exit();
 	    	}
 
 	    	string MY_IP = args[0];
 	    	WinCtl wc = new WinCtl();
+	    	Socket s;
+	    	TcpListener listener;
+	    	IPAddress ipAdress;
 
 	        try
 	        {
-	        	IPAddress ipAdress = IPAddress.Parse(MY_IP);
-	        	TcpListener listener = new TcpListener(ipAdress,8777);
+	        	ipAdress = IPAddress.Parse(MY_IP);
+	        	listener = new TcpListener(ipAdress,8777);
 	        	listener.Start();
-	        	Socket s = listener.AcceptSocket();
+	        	s = listener.AcceptSocket();
 	        	byte[] b = new byte[4];
 	        	while (true){
 	        		s.Receive(b);
