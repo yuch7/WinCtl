@@ -80,11 +80,12 @@ namespace WinCtl {
 
 		        	}
 	        	}
-	        	s.Close();
-	        	listener.Stop();
+	        	
 
 	        } catch (System.Exception e) {
 	        	Console.WriteLine("Error..... " + e.StackTrace);
+	        	s.Close();
+	        	listener.Stop();
 	        }
 
 	        
