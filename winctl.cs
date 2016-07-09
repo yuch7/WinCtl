@@ -50,6 +50,7 @@ namespace WinCtl {
 	    static void Main(string[] args)
 	    {
 	    	string MY_IP = args[0];
+	    	WinCtl wc = new WinCtl();
 
 	        try
 	        {
@@ -65,16 +66,16 @@ namespace WinCtl {
 					int z = BitConverter.ToInt32(b, 0);
 	        		switch (z) {
 		        		case 1:
-		        			VolUp();
+		        			wc.VolUp();
 		        			break;
 		        		case 2:
-		        			VolDown();
+		        			wc.VolDown();
 		        			break;
 		        		case 3:
-		        			ShutdownTimer(4000);
+		        			wc.ShutdownTimer(4000);
 		        			break;
 		        		case 4:
-		        			ShutdownTimer(8000);
+		        			wc.ShutdownTimer(8000);
 		        			break;
 
 		        	}
