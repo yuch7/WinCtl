@@ -9,31 +9,22 @@ using System.Net.Sockets;
 namespace WinCtl {
 	public class WinCtl
 	{
-	    private const int APPCOMMAND_VOLUME_MUTE = 0x80000;
-	    private const int APPCOMMAND_VOLUME_UP = 0xA0000;
-	    private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
-	    private const int WM_APPCOMMAND = 0x319;
-
-	    [DllImport("user32.dll")]
-	    public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
-	        IntPtr wParam, IntPtr lParam);
+	 	[DllImport("user32.dll")]
+		static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
 	    private void Mute()
 	    {
-	        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle,
-	            (IntPtr)APPCOMMAND_VOLUME_MUTE);
+	    	keybd_event((byte)Keys.VolumeMute, 0, 0, 0); // decrease volume
 	    }
 
 	    private void VolDown()
 	    {
-	        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle,
-	            (IntPtr)APPCOMMAND_VOLUME_DOWN);
+	    	keybd_event((byte)Keys.VolumeDown, 0, 0, 0); // decrease volume
 	    }
 
 	    private void VolUp()
 	    {
-	        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle,
-	            (IntPtr)APPCOMMAND_VOLUME_UP);
+	    	keybd_event((byte)Keys.VolumeUp, 0, 0, 0); // increase volume
 	    }
 
 	    private void ShutdownTimer(int time) {
