@@ -53,6 +53,7 @@ namespace WinCtl {
 	    	if (args.Length != 1) {
 	    		Console.WriteLine("Usage: winctl.exe <ip address>");
 	    		Application.Exit();
+	    		Environment.Exit(1);
 	    	}
 
 	    	string MY_IP = args[0];
